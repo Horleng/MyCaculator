@@ -28,10 +28,11 @@ class Caculator {
             this.previousText.innerText = `${this.previousNumber} ${this.operators}`;
     }
     selectOperator(operator){
-        if(!this.currentNumber) return this.operators = operator;
+        if(!this.currentNumber && this.previousNumber) return this.operators = operator;
         if(this.previousNumber) this.caculation();
-        this.operators = operator;
         this.previousNumber = this.currentNumber;
+        if(!this.previousNumber) return
+        this.operators = operator;
         this.currentNumber = "";
     }
     caculation(){
